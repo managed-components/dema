@@ -25,7 +25,12 @@ export const getPageviewPayload = (
       id: event.payload?.ecommerce?.zaraz?.sku ?? '',
       productId: event.payload?.ecommerce?.zaraz?.product_id ?? '',
       ip: event.client.ip,
-      country: (event.payload?.ecommerce?.country || event.payload?.country  || "").toUpperCase() || event.client.ip,
+      country:
+        (
+          event.payload?.ecommerce?.country ||
+          event.payload?.country ||
+          ''
+        ).toUpperCase() || event.client.ip,
     }),
   }
 }
@@ -63,7 +68,7 @@ export const getOrderPayload = (
         },
       },
       ip: event.client.ip,
-      country: (payload.country || "").toUpperCase() || event.client.ip,
+      country: (payload.country || '').toUpperCase() || event.client.ip,
     }),
   }
 }
